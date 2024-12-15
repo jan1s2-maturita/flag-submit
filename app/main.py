@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import FastAPI, HTTPException, Header
 from .models.db_connect import Database
-from .config import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, PUBLIC_KEY_PATH
+from .config import DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_PORT, PUBLIC_KEY_PATH
 db = Database(host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME)
 from jwt import decode
 
