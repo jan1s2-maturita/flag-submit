@@ -4,10 +4,11 @@ from .models.db_connect import Database
 from .config import DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_PORT, PUBLIC_KEY_PATH
 db = Database(host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASS, db_name=DB_NAME)
 from jwt import decode
+from pydantic import BaseModel
 
 app = FastAPI()
 
-class Data:
+class Data(BaseModel):
     flag: str
 @app.post("/submit/{flag_id}")
 async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header("X-Token")]):
