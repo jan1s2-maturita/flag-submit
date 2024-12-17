@@ -11,7 +11,7 @@ app = FastAPI()
 class Data(BaseModel):
     flag: str
 @app.post("/submit/{flag_id}")
-async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header("X-Token")]):
+async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header()]):
     payload = None
     try:
         with open(PUBLIC_KEY_PATH, 'r') as f:
