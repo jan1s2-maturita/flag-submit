@@ -23,3 +23,7 @@ async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header()]):
         return {"success": True}
     else:
         raise HTTPException(status_code=400, detail="Invalid flag")
+
+@app.get("/health")
+async def health():
+    return {"status": "up"}
