@@ -10,7 +10,7 @@ app = FastAPI()
 
 class Data(BaseModel):
     flag: str
-@app.post("/submit/{flag_id}")
+@app.post("/{flag_id}")
 async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header()]):
     payload = None
     try:
