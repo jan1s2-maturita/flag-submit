@@ -19,7 +19,7 @@ async def submit(flag_id: int, data: Data, x_token: Annotated[str, Header()]):
             payload = decode(x_token, public_key, algorithms=['RS256'])
     except Exception as e:
         raise HTTPException(status_code=401, detail="Invalid token")
-    if db.submit_user_flag(payload["id"], flag_id, data.flag):
+    if db.submit_user_flag(payload["sub"], flag_id, data.flag):
         return {"success": True}
     else:
         raise HTTPException(status_code=400, detail="Invalid flag")
