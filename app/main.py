@@ -6,7 +6,7 @@ db = Database(host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASS, db_nam
 from jwt import decode
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(root_path="/api/flag-submit")
 
 class Data(BaseModel):
     flag: str
